@@ -1,4 +1,4 @@
 - import_tasks: prepare_kubeadm.yml
 - import_tasks: install_docker.yml
-- import_tasks: install_kubernetes.yml
 - import_tasks: disabled_selinux.yml
+- import_tasks: install_kubernetes.yml

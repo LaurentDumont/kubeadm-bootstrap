@@ -26,3 +26,4 @@
       - containerd.io
       - docker-ce-cli
     state: present
+  notify: Enable docker
