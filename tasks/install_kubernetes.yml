@@ -8,9 +8,12 @@
     exclude:
       - kube*
 
-- name: Add the GPG key for the Kubernetes repository.
+- name: Add the GPG key for the Kubernetes repository - Key 2.
   rpm_key:
     state: present 
-    key:
-      - https://packages.cloud.google.com/yum/doc/yum-key.gpg
-      - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    key: https://packages.cloud.google.com/yum/doc/yum-key.gpg
+
+- name: Add the GPG key for the Kubernetes repository - Key 2.
+  rpm_key:
+    state: present 
+    key: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
