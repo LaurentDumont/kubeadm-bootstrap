@@ -17,30 +17,21 @@
     state: stopped
     enabled: no
 
-
-- name: Install prerequisites for Docker.
-  package:
-    name:
-      - yum-utils
-      - device-mapper-persistent-data
-      - lvm2
+- name: Make sure we allow local switched/routed packets to go through iptables.
+  modprobe:
+    name: br_netfilter
     state: present
 
-- name: Add the yum repository.
-  yum_repository:
-    name: docker-ce
-    description: Docker CE official repsitory
-    baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
-
-- name: Add the GPG key for the repository.
-  rpm_key:
-    state: present 
-    key: https://download.docker.com/linux/centos/gpg
-
-- name: Install Docker.
-  package:
-    name:
-      - docker-ce
-      - containerd.io
-      - docker-ce-cli
+- name: Enable bridge-nf-call-iptables for IPv4.
+  sysctl:
+    name: net.bridge.bridge-nf-call-iptables 
+    value: 1
     state: present
+    sysctl_file: /etc/sysctl.d/k8s.conf
+
+- name: Enable bridge-nf-call-ip6tables for IPv6.
+  sysctl:
+    name: net.bridge.bridge-nf-call-ip6tables 
+    value: 1
+    state: present
+    sysctl_file: /etc/sysctl.d/k8s.conf

@@ -1,0 +1,28 @@
+---
+
+- name: Install prerequisites for Docker.
+  package:
+    name:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+    state: present
+
+- name: Add the yum repository.
+  yum_repository:
+    name: docker-ce
+    description: Docker CE official repsitory
+    baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+
+- name: Add the GPG key for the Docker repository.
+  rpm_key:
+    state: present 
+    key: https://download.docker.com/linux/centos/gpg
+
+- name: Install Docker.
+  package:
+    name:
+      - docker-ce
+      - containerd.io
+      - docker-ce-cli
+    state: present
