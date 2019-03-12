@@ -16,3 +16,24 @@
     name: firewalld
     state: stopped
     enabled: no
+
+
+- name: Install prerequisites for Docker.
+  package:
+    name:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+    state: present
+
+- name: Add the yum repository.
+  yum_repository:
+    name: https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: Install Docker.
+  package:
+    name:
+      - docker-ce
+      - containerd.io
+      - docker-ce-cli
+    state: present
