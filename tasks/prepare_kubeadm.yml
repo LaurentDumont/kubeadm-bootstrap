@@ -32,6 +32,11 @@
     description: Docker CE official repsitory
     baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
 
+- name: Add the GPG key for the repository.
+  rpm_key:
+    state: present 
+    key: https://download.docker.com/linux/centos/gpg
+
 - name: Install Docker.
   package:
     name:
