@@ -1,0 +1,11 @@
+---
+
+- name: Change the SELinux policy to permissive.
+  selinux:
+    policy: targeted
+    state: permissive
+  register: selinuxstate
+
+- name: Reboot the machine.
+  reboot:
+  when: selinuxstate.changed
