@@ -19,7 +19,7 @@
     state: present 
     key: https://download.docker.com/linux/centos/gpg
 
-- name: Install Docker.
+- name: Remove old Docker packages.
   package:
     name:
       - docker-ce
@@ -33,4 +33,4 @@
       - docker-ce-18.06.0.ce-3.el7
       - containerd.io
     state: present
-  notify: Enable docker.
+  notify: Enable Docker.
