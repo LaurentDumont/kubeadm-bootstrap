@@ -19,14 +19,6 @@
     state: present 
     key: https://download.docker.com/linux/centos/gpg
 
-- name: Remove old Docker packages.
-  package:
-    name:
-      - docker-ce
-      - containerd.io
-      - docker-ce-cli
-    state: absent
-
 - name: Install Docker.
   package:
     name:
