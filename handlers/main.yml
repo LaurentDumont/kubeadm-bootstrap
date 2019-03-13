@@ -5,3 +5,9 @@
     name: docker
     state: started
     enabled: yes
+
+- name: Enable Kubernetes services.
+  service:
+    name: kubelet
+    state: started
+    enabled: yes

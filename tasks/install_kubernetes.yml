@@ -27,3 +27,4 @@
     - kubelet
     - kubeadm
     - kubectl
+  notify: Enable Kubernetes services.
