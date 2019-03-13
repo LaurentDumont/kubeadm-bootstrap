@@ -25,5 +25,12 @@
       - docker-ce
       - containerd.io
       - docker-ce-cli
+    state: absent
+
+- name: Install Docker.
+  package:
+    name:
+      - docker-ce-18.06.0.ce-3.el7
+      - containerd.io
     state: present
   notify: Enable docker
